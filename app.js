@@ -42,13 +42,43 @@ db.serialize(function () {
     console.log(row.LastName + '\'s ' + 'supervisor is ' + row.Supervisor);
   })
 
-  // db.run('CREATE TABLE CategoryFavorites', function () {
-  //   console.log('=========');
-  //   console.log('New Favorites');
-  //   console.log('=========');
-  // })
+  // db.run('DROP TABLE IF EXISTS CategoryFavorites')
 
-  //create table
+  // db.run('CREATE TABLE CategoryFavorites ' +
+  //   '( FavoriteID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ' +
+  //   'CategoryID INTEGER  NOT NULL );'
+  // );
+
+  // db.run('INSERT INTO CategoryFavorites (CategoryID) ' +
+  //   'VALUES (2), (4), (6), (8);'
+  // )
+
+  db.run('', function () {
+    console.log('=========');
+    console.log('Category Descriptions');
+    console.log('=========');
+  })
+
+  db.each('SELECT Description FROM Categories ' +
+    'INNER JOIN CategoryFavorites ' +
+    'ON Categories.CategoryID = CategoryFavorites.CategoryID', function (err, row) {
+      console.log(row.Description.toString());
+    });
+
+  //update categoryfavorites ID#2 change from Fvorite 4 to 5
+  db.run('UPDATE CategoryFavorites ' +
+      'SET CategoryID = 5 ' +
+      'WHERE FavoriteID = 2;' )
+
+  //Delete Category Favs Favorite ID 3.
+  // db.run('DELETE FROM CategoryFavorites ' +
+  //     'WHERE FavoriteID = 3;')
+
+  //INSET another row CategoryID = 1
+  // db.run('INSERT INTO CategoryFavorites (CategoryID) ' +
+  //   'VALUES (1);'
+  // )
+
 
 
   db.close();
