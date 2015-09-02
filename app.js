@@ -66,9 +66,9 @@ db.serialize(function () {
     });
 
   //update categoryfavorites ID#2 change from Fvorite 4 to 5
-  db.run('UPDATE CategoryFavorites ' +
-      'SET CategoryID = 5 ' +
-      'WHERE FavoriteID = 2;' )
+  // db.run('UPDATE CategoryFavorites ' +
+  //     'SET CategoryID = 5 ' +
+  //     'WHERE FavoriteID = 2;' )
 
   //Delete Category Favs Favorite ID 3.
   // db.run('DELETE FROM CategoryFavorites ' +
